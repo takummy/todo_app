@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use App\Http\Requests\CreateTask;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -11,5 +12,14 @@ class TaskController extends Controller
     {
         $tasks = Task::all();
         return view('tasks.index', compact('tasks'));
+    }
+
+    public function create(CreateTask $request)
+    {
+        $task = new Task();
+        $task->title = $request->title;
+        $task->save();
+
+        return redirect('/');
     }
 }

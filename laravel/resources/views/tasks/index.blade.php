@@ -11,7 +11,7 @@
                 <div class="panel-body">
                     @include('common.errors')
 
-                    <form action="{{ url('task')}}" method="POST" class="form-horizontal">
+                    <form action="{{ url('tasks/create')}}" method="POST" class="form-horizontal">
                         @csrf
 
                         <div class="form-group">
