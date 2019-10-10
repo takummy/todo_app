@@ -22,4 +22,9 @@ class TaskController extends Controller
 
         return redirect('/');
     }
+
+    public function show(int $id)
+    {
+        return view('tasks.show', ['task' => Task::find($id)]);
+    }
 }

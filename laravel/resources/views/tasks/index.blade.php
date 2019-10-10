@@ -11,7 +11,7 @@
                 <div class="panel-body">
                     @include('common.errors')
 
-                    <form action="{{ url('tasks/create')}}" method="POST" class="form-horizontal">
+                    <form action="{{url('tasks/create')}}" method="POST" class="form-horizontal">
                         @csrf
 
                         <div class="form-group">
@@ -53,6 +53,9 @@
                                             <div>{{ $task->title }}</div>
                                         </td>
                                         <td>
+                                            <a class="btn btn-primary" href="{{url('tasks/show', ['id' => $task->id])}}">
+                                                詳細
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
