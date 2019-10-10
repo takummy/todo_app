@@ -27,4 +27,9 @@ class TaskController extends Controller
     {
         return view('tasks.show', ['task' => Task::find($id)]);
     }
+
+    public function delete(Request $request) {
+        Task::find($request->id)->delete();
+        return redirect('/');
+    }
 }
