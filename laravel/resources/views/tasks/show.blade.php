@@ -21,6 +21,16 @@
                                     <div>{{ $task->title }}</div>
                                 </td>
                                 <td>
+                                    <form  action="{{ url('tasks/delete/'.$task->id) }}"
+                                           method="POST"
+                                           onclick='return confirm("本当に削除しますか？");'>
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="fa fa-btn fa-trash"></i> 削除
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         </tbody>
