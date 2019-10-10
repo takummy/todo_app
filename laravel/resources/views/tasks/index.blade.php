@@ -58,6 +58,11 @@
                                             </a>
                                         </td>
                                         <td>
+                                            <a class="btn btn-warning" href="{{url('tasks/edit', ['id' => $task->id])}}">
+                                                編集
+                                            </a>
+                                        </td>
+                                        <td>
                                             <form  action="{{ url('tasks/delete/'.$task->id) }}"
                                                    method="POST"
                                                    onclick='return confirm("本当に削除しますか？");'>
