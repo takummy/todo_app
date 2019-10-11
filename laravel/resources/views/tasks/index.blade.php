@@ -11,7 +11,7 @@
                 <div class="panel-body">
                     @include('common.errors')
 
-                    <form action="{{ url('task')}}" method="POST" class="form-horizontal">
+                    <form action="{{url('tasks/create')}}" method="POST" class="form-horizontal">
                         @csrf
 
                         <div class="form-group">
@@ -53,6 +53,26 @@
                                             <div>{{ $task->title }}</div>
                                         </td>
                                         <td>
+                                            <a class="btn btn-primary" href="{{url('tasks/show', ['id' => $task->id])}}">
+                                                詳細
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-warning" href="{{url('tasks/edit', ['id' => $task->id])}}">
+                                                編集
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <form  action="{{ url('tasks/delete/'.$task->id) }}"
+                                                   method="POST"
+                                                   onclick='return confirm("本当に削除しますか？");'>
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button type="submit" class="btn btn-danger">
+                                                    <i class="fa fa-btn fa-trash"></i> 削除
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

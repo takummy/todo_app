@@ -1,13 +1,8 @@
-@if (count($errors) > 0)
-    <!-- Form Error List -->
+@if($errors->any())
     <div class="alert alert-danger">
-        <strong>エラーがあります！</strong>
-
-        <br><br>
-
         <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+            @foreach ($errors->all() as $message)
+                <li>{{ $message }}</li>
             @endforeach
         </ul>
     </div>
