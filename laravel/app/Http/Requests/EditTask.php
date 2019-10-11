@@ -8,16 +8,6 @@ use Illuminate\Validation\Rule;
 class EditTask extends CreateTask
 {
     /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
-
-    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -25,16 +15,12 @@ class EditTask extends CreateTask
     public function rules()
     {
         $rule = parent::rules();
-        return [
-            //
-        ];
+        return $rule;
     }
 
     public function attributes()
     {
-        $rule = parent::attributes();
-        return [
-            //
-        ];
+        $attributes = parent::attributes();
+        return $attributes;
     }
 }
