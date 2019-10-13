@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Folder;
 use App\Task;
 use App\Http\Requests\CreateTask;
 use App\Http\Requests\EditTask;
@@ -9,10 +10,17 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    public function index()
+    public function index(int $id)
     {
-        $tasks = Task::all();
-        return view('tasks.index', compact('tasks'));
+        $folders = Folder::all();
+        $current_folder = Folder::find($id);
+        $tasks = Task::where('folder_id', $current_folder->id)->get();
+
+        return view('tasks/index', [
+            'folders' => $folders,
+            'current_folder_id' => $current_folder->id,
+            'tasks' => $tasks
+        ]);
     }
 
     public function create(CreateTask $request)
