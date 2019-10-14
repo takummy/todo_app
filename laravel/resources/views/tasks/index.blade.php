@@ -48,7 +48,7 @@
                   <td>{{ $task->title }}</td>
                   <td>
                     <span class="label {{ $task->status_class }}">
-                      {{ $task->status }}
+                      {{ $task->status_label }}
                     </span>
                   </td>
                   <td>{{ $task->date_date }}</td>
