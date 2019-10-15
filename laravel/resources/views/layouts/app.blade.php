@@ -1,3 +1,4 @@
+@extends('layouts')
 <!DOCTYPE html>
 <html lang="ja">
 <head>
