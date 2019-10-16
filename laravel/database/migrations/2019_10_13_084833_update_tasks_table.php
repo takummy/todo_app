@@ -15,7 +15,7 @@ class UpdateTasksTable extends Migration
     {
         Schema::table('tasks', function (Blueprint $table) {
             $table->bigInteger('folder_id')->after('id')->nullable()->unsigned();
-            $table->date('due_date');
+            $table->date('due_date')->default('2019-10-16');
             $table->integer('status')->default(1);
         });
 
