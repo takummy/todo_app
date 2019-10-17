@@ -49,19 +49,25 @@ class TaskController extends Controller
         return view('tasks.show', ['task' => Task::find($id)]);
     }
 
-    public function edit(int $id)
+    public function showEditForm(int $id, int $task_id)
     {
-        $task = Task::find($id);
-        return view('tasks.edit', ['task' => Task::find($id)]);
+        $task = Task::find($task_id);
+        return view('tasks/edit', [
+            'task' => $task
+        ]);
     }
 
-    public function update(int $id, EditTask $request)
+    public function edit(int $id, int $task_id, EditTask $request)
     {
-        $task = Task::find($id);
+        $task = Task::find($task_id);
         $task->title = $request->title;
+        $task->status = $request->status;
+        $task->due_date = $request->due_date;
         $task->save();
 
-        return redirect('tasks/show/'.$task->id);
+        return redirect()->route('tasks.index', [
+            'id' => $task->folder_id
+        ]);
     }
 
     public function delete(Request $request) {
